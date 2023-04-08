@@ -1,0 +1,132 @@
+.contact_us {
+    background-color: var(--secondary1);
+}
+
+.contact, .map, .subscribed{
+    background-color: #FFEDE1;
+    font-family: 'Inter', sans-serif;
+}
+.info_title p {
+    color: #FA7100;
+    font-size:normal;
+    font-weight: 700;
+    font-size: 4vw;
+    text-align: left;
+    margin-bottom: 0;
+}
+.info_left {
+    color: #626262;
+    flex: 1;
+}
+
+.info_right {
+    flex: 1;
+}
+
+.info_left_text_note{
+    color: #000;
+}
+.info_form{
+    border-color: #FFEDE1;
+    border: 1st solid #449583;
+}
+#cmt{
+    height: 50px;
+    width: 100%;
+} 
+
+.subscribed_title{
+    font-size: 40px;
+    font-weight: 700;
+}
+.subscribed{
+    background-color: #449583;
+    color: #FFEDE1;
+    padding: 5vw 0 5vw 5vw;
+    display: flex;
+    width: 70%;
+    border-radius: 20px;
+    margin: 10% 10% 10% 15%;
+}
+.subscribed_right>img {
+    position: relative;
+    width: 300px
+}
+
+.field{
+    padding: .5rem 2rem;
+    outline: none;
+    border: 2px solid #449583;
+    background-color: white;
+    font-size: 1.1rem;
+    margin-bottom: 22px;
+    transition: 3s;
+    border-radius: 10px;
+}
+.field:hover{
+    background-color: rgba(0, 0, 0, 0.1);
+}
+.field:focus{
+    background-color: #fff;
+    border: 2px solid #FA7100;
+}
+.btn-sub {
+   border-radius: 40px 0 !important;
+   
+    background-color:#FA7100 !important;
+    width: 160px !important;
+    color: white !important;
+}
+.sub img{
+    width: 20%;
+    float: right;
+    
+}
+footer{
+    background-color: #449583;
+    color: #fff;
+    padding: 5vw;
+    font-size: 17px;
+}
+#Submit-btn{
+    background-color: #fff !important;
+    color: #449583 !important;
+}
+footer .coppy{
+    margin-top: 100px;
+    float: bottom;
+}
+footer img{
+    max-width: 400px;
+    padding: 20px;
+    float: right;
+}
+@media screen and (max-width: 800px) {
+    .container-fluid, .footer_thongtin ,.col-8, nav {
+        flex-direction: column
+    }
+    .middle_left img{
+        display: none;
+    }
+    .khoi{
+        margin-bottom: 10px;
+    }
+    #khoi1{
+        display: none;
+    }
+    .khoi_footer{
+        text-align: center;
+    }
+    .anh1{
+        display: none;
+    }
+    .thongtin_right{
+        width: 100%;
+    }
+}
+@media screen and (max-width: 800px) {
+    
+    .middle{
+        display: none;
+    }
+}

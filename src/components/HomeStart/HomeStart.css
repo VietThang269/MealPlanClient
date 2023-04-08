@@ -1,0 +1,32 @@
+.home_start_left {
+    flex: 1;
+}
+.home_start_right {
+    flex: 1;
+}
+
+.home_start_text {
+    color:  var(--primary2);
+    text-align: center;
+    margin: 0;
+}
+
+.home_start_title {
+    color: var(--primary1);
+    font-size: 80px;
+}
+
+@media only screen and (max-width: 740px) {
+    .home_start_title {
+      font-size: 50px !important;
+    }
+  
+    .home_start_text {
+        font-size: 14px;
+    }
+
+    .home_start_right {
+      padding: 0 !important;
+      margin-top: 0 !important;
+    }
+  }

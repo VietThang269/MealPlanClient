@@ -1,0 +1,18 @@
+.what_say {
+    background-color: var(--primary2);
+}
+
+.what_say_title {
+    color: var(--secondary1);
+    font-weight: 600;
+    font-size: 80px;
+    margin-bottom: 50px;
+}
+
+.what_say_name {
+    color: var(--secondary1);
+}
+
+.what_say_text {
+    color: var(--secondary1);
+}

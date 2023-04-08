@@ -1,0 +1,35 @@
+.shop {
+    background-color: var(--secondary1);
+}
+
+.product_list {
+    margin-top: 20px;
+}
+
+.product_item {
+    padding: 30px 30px;
+    border: #449583 1px solid;
+    border-radius: 20px;
+    width: 270px;
+    text-align: center;
+}
+
+.product_item_price {
+    color: var(--primary1);
+}
+
+.product_item_add {
+    width: 40px;
+    height: 40px;
+    background-color: #ccc;
+    border-radius: 50%;
+    background-color: var(--primary1);
+    cursor: pointer;
+}
+
+.product_item_sale {
+    font-weight: 500;
+    text-decoration: line-through;
+    color:#000;
+    font-size: 14px;
+}

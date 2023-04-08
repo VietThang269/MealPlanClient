@@ -1,0 +1,32 @@
+#footer {
+    background-color: var(--primary2);
+    padding: 100px 0 50px 0;
+
+    color: var(--secondary1);
+}
+
+.footer_top {}
+.footer_title {}
+.footer_bottom {}
+
+.input_footer {
+    outline: none;
+    border: 1px solid #ccc;
+    width: 100%;
+    border-radius: 5px;
+    background-color: transparent;
+    color: var(--secondary1);
+    padding: 10px 15px;
+}
+
+.btn-footer {
+    border: none;
+    background-color: var(--secondary1);
+    color: var(--primary2);
+    font-weight: 600;
+}
+
+.btn-footer:hover {
+    color: var(--primary2);
+    background-color: var(--hover_secondary1);
+}

@@ -1,0 +1,16 @@
+.recipes_bottom_text {
+    color: var(--primary2);
+}
+
+.recipes_bottom_title {
+    font-weight: 600;
+    font-size: 80px;
+    color: var(--primary1);
+}
+
+.recipes_bottom_left {
+    flex: 1;
+}
+.recipes_bottom_right {
+    flex: 1;
+}

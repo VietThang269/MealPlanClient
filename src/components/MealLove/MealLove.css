@@ -1,0 +1,17 @@
+.meal_love_left {
+    flex: 1;    
+}
+
+.meal_love_right {
+    flex: 1;    
+}
+
+.meal_love_title {
+    color: var(--primary1);
+    font-size: 80px;
+    font-weight: 600;
+}
+
+.meal_love_desc {
+    color: var(--primary2);
+}

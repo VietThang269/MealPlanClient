@@ -1,0 +1,25 @@
+.made_for_you {
+    padding: 220px 0;
+}
+
+.made_for_you_title {
+    font-size: 80px;
+    font-weight: 600;
+    color: var(--primary1);
+}
+
+.made_for_you_text {
+    color: var(--primary2);
+}
+
+.made_for_you_img1 {
+    width: 440px;
+    top: 20px;
+    right: -250px;
+}
+
+.made_for_you_img2 {
+    width: 440px;
+    bottom: 20px;
+    left: -250px;
+}

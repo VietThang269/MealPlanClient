@@ -1,0 +1,252 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Clear Sans', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+  --primary1: #FA7100;
+  --primary2: #449583;
+  --hover_primary2: #31695d;
+  --hover_primary1: #cf6106;
+  --secondary1: #ffece1;
+  --hover_secondary1: #e1d2ca;
+
+}
+
+a {text-decoration: none !important;}
+
+.form-check-input:checked {
+  background-color: var(--primary2);
+  border-color: var(--primary2);
+}
+
+.btn-primary {
+  border: none;
+  background-color: var(--primary2);
+  color: var(--secondary1);
+}
+
+.btn-primary2 {
+  border: none;
+  background-color: var(--primary1);
+  color: var(--secondary1);
+}
+
+.btn-primary.outline {
+  background-color: transparent;
+  border: 1px solid var(--primary2);
+  color: var(--primary2);
+
+}
+
+.btn-primary:active,
+.btn-primary:focus-visible,
+.btn-primary:hover {
+  background-color: var(--hover_primary2) !important;
+}
+
+.btn-primary2:active,
+.btn-primary2:focus-visible,
+.btn-primary2:hover {
+  background-color: var(--hover_primary1) !important;
+  color: var(--secondary1);
+
+}
+
+.btn-primary.outline:active,
+.btn-primary.outline:focus-visible,
+.btn-primary.outline:hover {
+  background-color: #ccc !important;
+}
+
+
+.btn_minus,
+.btn_add {
+  background-color: var(--primary1);
+  min-width: 40px;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+}
+
+.btn_minus:active,
+.btn_minus:focus-visible,
+.btn_minus:hover {
+  background-color: var(--primary1) !important;
+}
+
+.btn_add:active,
+.btn_add:focus-visible,
+.btn_add:hover {
+  background-color: var(--primary1) !important;
+}
+
+.container {
+  padding-left: 16px;
+  padding-right: 16px;
+  max-width: 1260px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header_hambuger,
+.header_drawer {
+  display: none;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.ReactModal__Overlay  {
+  z-index: 999;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+
+@media only screen and (max-width: 1024px) {
+  .container {
+    max-width: 980px;
+  }
+
+  .about_sub_right {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 740px) {
+  .container {
+    max-width: 720px;
+  }
+
+  .header_logo {
+    width: 50px;
+  }
+
+  .home_slider  {
+    display:  none !important;
+  }
+
+  .home_start {
+    flex-direction: column;
+  }
+
+  .about_sub_title,
+  .about_info_title,
+  .home_start_title {
+    font-size: 24px !important;
+  }
+
+  .home_start_right {
+    padding: 0;
+    margin: 0;
+  }
+
+  .made_for_you_title,
+  .what_say_title,
+  .meal_love_title,
+  .our_process_title,
+  .recipes_bottom_title,
+  .recipes_top_title,
+  .our_favorites_title {
+    font-size: 50px !important;
+  }
+
+  .made_for_you_text,
+  .what_say_text,
+  .meal_love_desc,
+  .our_process_item_text,
+  .recipes_bottom_text,
+  .btn-recipes,
+  .recipes_top_text,
+  .our_favorites_text,
+  .our_favorites_sub_title {
+    font-size: 14px !important;
+  }
+
+  .info,
+  .column_mobile,
+  .about_info_number,
+  .about_info_avatar,
+  .about_info,
+  .meal_love_container,
+  .our_process_container,
+  .our_favorites_container {
+    flex-direction: column;
+  }
+
+  .our_favorites_item {
+    min-height: 450px !important;
+  }
+
+  .cart_item,
+  .about_expert_right,
+  .about_expert_container,
+  .product_sorting,
+  .banner_container,
+  .what_say_container,
+  .recipes_bottom,
+  .recipes_top {
+    flex-direction: column;
+  }
+  
+  .our_process_item_title {
+    font-size: 18px !important;
+  }
+
+  .made_for_you {
+    padding: 50px 0 !important;
+  }
+
+  .made_for_you_container {
+    width: 90% !important;
+  }
+
+  .btn_menu_header,
+  .made_for_you_img1,
+  .made_for_you_img2 {
+    display: none;
+  }
+
+  .cart_header_mobile,
+  .header_hambuger,
+  .header_drawer {
+    display: block !important;
+  }
+
+  .about_info_right, .about_info_content_left, .about_info_content_right, .about_info_left {
+    width: 100% !important;
+  }
+
+  .cart_header,
+  .about_sub_right,
+  .about_middle_left_img,
+  .about_middle_right{
+    display: none !important;
+  }
+  .about_middle_left{
+    max-height: unset !important;
+    left: 0 !important;
+  }
+
+  .about_expert_right_item:nth-child(2) {
+    top: 0 !important;
+  }
+}

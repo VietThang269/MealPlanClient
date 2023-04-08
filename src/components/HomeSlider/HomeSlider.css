@@ -1,0 +1,30 @@
+.home_slider {
+    right: 0;
+    top: 400px;
+
+    padding: 20px 30px;
+
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    background-color: var(--primary1);
+    width: 600px;
+
+    color: var(--secondary1);
+}
+
+.home_slider_title {
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+    text-orientation: sideways-right;
+}   
+
+.home_slider_img {
+    flex: 1;
+    object-fit: contain;
+    width: 90%;
+}
+
+.home_slider_item {
+    align-items: flex-start;
+    /* width: 120px; */
+}

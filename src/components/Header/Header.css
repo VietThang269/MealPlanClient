@@ -1,0 +1,11 @@
+#header {
+    background-color: var(--secondary1);
+    top: 0;
+}
+
+.header_container {
+}
+
+.header_logo {
+    cursor: pointer;
+}

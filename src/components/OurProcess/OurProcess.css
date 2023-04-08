@@ -1,0 +1,41 @@
+.our_process {
+    background-color: var(--primary2);
+}
+
+.our_process_item {
+    background-color: var(--secondary1);
+    border-radius: 20px;
+    padding: 40px 20px;
+    min-height: 400px;
+    max-width: 300px;
+}
+
+.our_process_item_title {
+    color: var(--primary1);
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.our_process_item_text {
+    color: var(--primary1);
+}
+
+.our_process_title {
+    color: var(--secondary1);
+    font-weight: 600;
+    font-size: 80px;
+}
+
+.our_process_text {
+    color: var(--secondary1);
+}
+
+.meal_love_more {
+    top: 0;
+    right: 0;
+    z-index: 1;
+    width: 500px;
+    height: 100%;
+    background-color: red;
+}
+

@@ -1,0 +1,22 @@
+.banner {
+    background-color: var(--primary2);
+
+}
+
+.banner_left {
+    width: 300px;
+}
+
+.banner_left_title {
+    font-size: 50px;
+    font-weight: bold;
+    color: var(--secondary1);
+}
+
+.banner_left_text {
+    color: var(--secondary1);
+}
+
+.banner_right > img {
+    width: 300px;
+  }

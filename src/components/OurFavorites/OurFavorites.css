@@ -1,0 +1,31 @@
+.our_favorites {
+    background-color: var(--primary2);
+}
+
+.our_favorites_title {
+    font-size: 80px;
+    font-weight: 600;
+    color: var(--secondary1);
+    margin: 0;
+}
+.our_favorites_sub_title {
+    color: var(--secondary1);
+    margin: 0;
+}
+
+.our_favorites_item {
+    background-color: var(--secondary1);
+    padding: 40px 30px;
+    border-radius: 20px;
+    min-height: 550px;
+}
+
+.our_favorites_item_title {
+    text-transform: uppercase;
+    font-size: 20px;
+}
+
+.our_favorites_text {
+    color: var(--primary2);
+    text-align: center;
+}

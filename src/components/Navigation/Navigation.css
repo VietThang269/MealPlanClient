@@ -1,0 +1,16 @@
+
+.nav_item {
+    color: var(--primary2);
+    margin: 0;
+}
+
+@media only screen and (max-width: 740px) {
+    .nav {
+        display: none !important;
+    }
+
+    .nav_drawer {
+        flex-direction: column;
+        margin-top: 20px;
+    }
+}

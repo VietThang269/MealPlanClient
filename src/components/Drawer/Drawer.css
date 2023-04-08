@@ -1,0 +1,10 @@
+.header_drawer {
+    position: fixed;
+    width: 250px;
+    height: 100%;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    background-color: var(--secondary1);
+    padding: 20px;
+}
