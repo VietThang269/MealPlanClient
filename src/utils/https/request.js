@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const baseDomain = "http://localhost:8000/api/";
+export const baseDomain = "https://apimealplan.onrender.com/api/";
 
 export async function apiPost(url, payload, header) {
   url = baseDomain + url;
