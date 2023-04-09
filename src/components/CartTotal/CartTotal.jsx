@@ -1,10 +1,57 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import "./CartTotal.css";
-import { useSelector } from "react-redux";
-import { selectTotal } from "../../features/cart/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  resetData,
+  selectListCard,
+  selectTotal,
+} from "../../features/cart/cartSlice";
+import { apiPost, apiPut } from "../../utils/https/request";
+import { toast } from "react-toastify";
 
 const CartTotal = () => {
   const totalData = useSelector(selectTotal);
+  const listData = useSelector(selectListCard);
+  const { id, cartId } = JSON.parse(localStorage.getItem("id"));
+
+  const [address, setAddress] = useState("");
+
+  const inputRef = useRef();
+  const dispatch = useDispatch();
+
+  async function hanldeCheckout() {
+    if (address.length <= 0) {
+      toast("Hãy điền địa chỉ !", { type: "error" });
+      inputRef.current.focus();
+      return;
+    }
+    try {
+      const response = await apiPost(
+        "order",
+        {
+          address,
+          total: totalData,
+          list: listData,
+          userId: id,
+        },
+        {}
+      );
+
+      if (response.error === 0) {
+        toast("Đơn hàng của bạn đã được xác nhận !", { type: "success" });
+        dispatch(resetData());
+        // Clear cart in db
+        try {
+          const response = await apiPut(`cart/${cartId}`, [], {});
+        } catch (error) {
+          toast("Có lỗi xảy ra !", { type: "error" });
+        }
+      }
+    } catch (error) {
+      toast("Có lỗi xảy ra !", { type: "error" });
+    }
+  }
+
   return (
     <div className="cart_total d-flex justify-content-end mt-5">
       <div>
@@ -57,40 +104,22 @@ const CartTotal = () => {
                 aria-expanded="false"
                 aria-controls="collapseExample"
                 className="change_address"
+                onClick={() => {
+                  setAddress("");
+                  inputRef.current.focus();
+                }}
               >
                 Change Address
               </a>
-              <div class="collapse" id="collapseExample">
-                <div className=" d-flex flex-column gap-2 mt-3">
-                  <select class="form-select">
-                    <option selected value="Bangladesh">
-                      Bangladesh
-                    </option>
-                    <option value="Argentina">Argentina</option>
-                    <option value="Armenia">Armenia</option>
-                  </select>
-
-                  <select class="form-select">
-                    <option selected value="default">
-                      Select option...
-                    </option>
-                    <option value="Bagerhat">Bagerhat</option>
-                    <option value="Bandarban">Bandarban</option>
-                    <option value="Barguna">Barguna</option>
-                    <option value="Bashisal">Bashisal</option>
-                  </select>
-
-                  <input
-                    class="form-control"
-                    type="text"
-                    placeholder="Town/City"
-                  />
-                  <input
-                    class="form-control"
-                    type="text"
-                    placeholder="PostCode/ZIP"
-                  />
-                </div>
+              <div className=" d-flex flex-column gap-2 mt-3">
+                <input
+                  ref={inputRef}
+                  class="form-control"
+                  type="text"
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
+                  placeholder="Address..."
+                />
               </div>
             </div>
           </div>
@@ -105,7 +134,10 @@ const CartTotal = () => {
           </div>
         </div>
 
-        <button className="btn btn-primary py-3 px-3 mt-3 w-25">
+        <button
+          className="btn btn-primary py-3 px-3 mt-3 w-25"
+          onClick={() => hanldeCheckout()}
+        >
           Checkout
         </button>
       </div>

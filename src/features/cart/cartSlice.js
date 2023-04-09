@@ -53,6 +53,11 @@ export const cartSlice = createSlice({
       state.list = newList;
     },
 
+    resetData(state, action) {
+      state.list = [];
+      state.total = 0;
+    },
+
     removeFromCart(state, action) {},
     updateCart(state, action) {},
   },
@@ -67,6 +72,7 @@ export const {
   addToCart,
   changeQuanity,
   calcTotal,
+  resetData,
   removeItem,
 } = cartSlice.actions;
 
