@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import IconCart from "../../assets/icons/IconCart";
 import IconHamburger from "../../assets/icons/IconHamburger";
@@ -13,8 +13,9 @@ import "./MenuHeader.css";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 import { useDispatch, useSelector } from "react-redux";
-import { logOut, selectIsLogin } from "../../features/user/userSlice";
+import { logOut, selectId, selectIsLogin } from "../../features/user/userSlice";
 import { toast } from "react-toastify";
+import { requestGetCart, selectListCard } from "../../features/cart/cartSlice";
 
 const customStyles = {
   content: {
@@ -51,6 +52,15 @@ const MenuHeader = ({ open, setOpen }) => {
     toast("Đăng xuất thành công !", { type: "success" });
   }
 
+  const listCart = useSelector(selectListCard);
+  const idUser = useSelector(selectId);
+
+  useEffect(() => {
+    if (idUser !== "") {
+      dispatch(requestGetCart({ userId: idUser || "0" }));
+    }
+  }, [dispatch, idUser, listCart]);
+
   return (
     <div className="d-flex menu_header gap-4 align-items-center">
       <button type="button" class="btn btn-primary btn_menu_header">
@@ -58,8 +68,31 @@ const MenuHeader = ({ open, setOpen }) => {
       </button>
       <IconSearch />
 
-      <div onClick={() => navigate("/cart")} style={{ cursor: "pointer" }}>
+      <div
+        onClick={() => navigate("/cart")}
+        style={{ cursor: "pointer", position: "relative" }}
+      >
         <IconCart />
+
+        <div
+          style={{
+            content: "",
+            position: "absolute",
+            top: 0,
+            right: 0,
+            backgroundColor: "red",
+            width: 15,
+            height: 15,
+            borderRadius: "50%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            color: "white",
+            fontSize: 12,
+          }}
+        >
+          {listCart?.length}
+        </div>
       </div>
 
       {isLogin ? (

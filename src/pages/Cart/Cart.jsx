@@ -8,10 +8,14 @@ import CartTotal from "../../components/CartTotal/CartTotal";
 import { useDispatch, useSelector } from "react-redux";
 import { requestGetCart, selectListCard } from "../../features/cart/cartSlice";
 import { selectId } from "../../features/user/userSlice";
+import { apiPut } from "../../utils/https/request";
+import { toast } from "react-toastify";
 const Cart = () => {
-  const dispatch = useDispatch();
   const listCart = useSelector(selectListCard);
   const idUser = useSelector(selectId);
+  const dispatch = useDispatch();
+
+  const { cartId } = JSON.parse(localStorage.getItem("id"));
 
   useEffect(() => {
     if (idUser !== "") {
@@ -19,6 +23,16 @@ const Cart = () => {
     }
   }, [dispatch, idUser]);
 
+  async function hanldeUpdateCart() {
+    try {
+      const response = await apiPut(`cart/${cartId}`, listCart, {});
+      if (response.error === 0) {
+        toast("Cập nhật giỏ hàng thành công!", { type: "success" });
+      }
+    } catch (error) {
+      toast("Có lỗi xảy ra !", { type: "error" });
+    }
+  }
   return (
     <div className="cart">
       <TopPage
@@ -74,7 +88,12 @@ const Cart = () => {
               </div>
 
               <div className="d-flex gap-3 align-items-center column_mobile">
-                <button className="btn btn-primary2">UPDATE CART</button>
+                <button
+                  className="btn btn-primary2"
+                  onClick={() => hanldeUpdateCart()}
+                >
+                  UPDATE CART
+                </button>
                 <button className="btn btn-primary2">CONTINUE SHOPPING</button>
               </div>
             </div>

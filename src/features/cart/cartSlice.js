@@ -47,9 +47,12 @@ export const cartSlice = createSlice({
       state.total = total.toFixed(2);
     },
 
-    addToCart(state, action) {
-      // Thêm -> giao diện trước -> server thành công hay ko thì mặc kê
+    removeItem(state, action) {
+      const { id } = action.payload;
+      const newList = state.list.filter((item, _) => item.id !== id);
+      state.list = newList;
     },
+
     removeFromCart(state, action) {},
     updateCart(state, action) {},
   },
@@ -64,6 +67,7 @@ export const {
   addToCart,
   changeQuanity,
   calcTotal,
+  removeItem,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

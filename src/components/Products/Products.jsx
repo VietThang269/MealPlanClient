@@ -35,12 +35,10 @@ const Products = () => {
     const { _id, price } = data;
     const { cartId } = JSON.parse(localStorage.getItem("id"));
 
-    console.log(cartId);
     try {
       const response = await apiPut(
-        "cart/add",
+        `cart/add/${cartId}`,
         {
-          id: cartId,
           productId: _id,
           price,
           quanity: 1,
@@ -51,7 +49,9 @@ const Products = () => {
       if (response.error === 0) {
         toast("Thêm vào giỏ hàng thành công", { type: "success" });
       }
-    } catch (error) {}
+    } catch (error) {
+      toast("Có lỗi xảy ra !", { type: "error" });
+    }
 
     console.log(data);
     // Client

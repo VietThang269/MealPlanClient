@@ -16,7 +16,7 @@ const CartTotal = () => {
               <p className="m-0">Cart Subtotal</p>
             </div>
             <div className="cart_total_1_right px-3 py-4">
-              <p className="m-0">${totalData?.toFixed(2)}</p>
+              <p className="m-0">${totalData}</p>
             </div>
           </div>
 
@@ -100,7 +100,7 @@ const CartTotal = () => {
               <p className="m-0">Order Total</p>
             </div>
             <div className="cart_total_1_right px-3 py-4">
-              <p className="m-0">${totalData?.toFixed(2)}</p>
+              <p className="m-0">${totalData}</p>
             </div>
           </div>
         </div>

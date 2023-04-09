@@ -1,13 +1,21 @@
 import React, { useEffect, useState } from "react";
 import Image from "../../assets/imgs/Home_Slider_1.png";
 import IconTrash from "../../assets/icons/IconTrash";
-import { useDispatch } from "react-redux";
-import { apiGet } from "../../utils/https/request";
-import { calcTotal, changeQuanity } from "../../features/cart/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { apiGet, apiPut } from "../../utils/https/request";
+import {
+  calcTotal,
+  changeQuanity,
+  removeItem,
+  selectListCard,
+} from "../../features/cart/cartSlice";
+import { toast } from "react-toastify";
 
 const CartItem = ({ id, quanity, price }) => {
   const [data, setData] = useState(null);
   const dispatch = useDispatch();
+  const listData = useSelector(selectListCard);
+  const { cartId } = JSON.parse(localStorage.getItem("id"));
 
   useEffect(() => {
     const fetchingProductById = async () => {
@@ -23,6 +31,18 @@ const CartItem = ({ id, quanity, price }) => {
   function hanldeChangeQuanity(id, quanity) {
     dispatch(changeQuanity({ id, quanity }));
     dispatch(calcTotal());
+  }
+
+  async function hanldeRemoveItem() {
+    const newData = listData.filter((item, _) => item.id !== id);
+    const reponse = await apiPut(`cart/${cartId}`, newData, {});
+    if (reponse.error === 0) {
+      dispatch(removeItem({ id }));
+      dispatch(calcTotal());
+      toast("Cập nhật giỏ hàng thành công !", { type: "success" });
+    } else {
+      toast("Có lỗi xảy ra !", { type: "error" });
+    }
   }
 
   return (
@@ -95,7 +115,7 @@ const CartItem = ({ id, quanity, price }) => {
         <div className="cart_header_mobile">
           <p>Remove</p>
         </div>
-        <div>
+        <div onClick={() => hanldeRemoveItem()}>
           <IconTrash />
         </div>
       </div>
