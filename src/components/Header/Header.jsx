@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 const Header = ({ open, setOpen }) => {
   const navigate = useNavigate();
   return (
-    <header id="header" className="py-3 shadow-lg position-sticky z-1">
+    <header id="header" className="py-3 shadow-lg position-sticky">
       <div className="container d-flex justify-content-between align-items-center header_container">
         <img
           src={Logo}

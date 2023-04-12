@@ -41,6 +41,8 @@ const MenuHeader = ({ open, setOpen }) => {
   const isLogin = useSelector(selectIsLogin);
   const [data, setData] = React.useState(0);
 
+  const [openMenu, setOpenMenu] = React.useState(false);
+
   const dispatch = useDispatch();
 
   const isChange = useSelector(selectIsChange);
@@ -56,6 +58,7 @@ const MenuHeader = ({ open, setOpen }) => {
   function hanldeLogout() {
     dispatch(logOut());
     toast("Đăng xuất thành công !", { type: "success" });
+    setOpenMenu(false);
   }
 
   const listCart = useSelector(selectListCard);
@@ -110,15 +113,58 @@ const MenuHeader = ({ open, setOpen }) => {
       </div>
 
       {isLogin ? (
-        <img
-          onClick={hanldeLogout}
-          src={AvatarLogin}
-          alt=""
+        <div
           style={{
-            width: 45,
-            height: 45,
+            position: "relative",
           }}
-        />
+        >
+          <img
+            onClick={() => setOpenMenu(!openMenu)}
+            src={AvatarLogin}
+            alt=""
+            style={{
+              width: 45,
+              height: 45,
+            }}
+          />
+          {openMenu && (
+            <div
+              style={{
+                position: "absolute",
+                bottom: -60,
+                left: -60,
+                backgroundColor: "#ccc",
+                width: 120,
+                borderRadius: 10,
+              }}
+            >
+              <div style={{ cursor: "pointer" }}>
+                <p
+                  style={{
+                    textAlign: "center",
+                    borderBottom: "1px solid #fff",
+                    margin: 0,
+                  }}
+                  onClick={() => {
+                    navigate("/list-order");
+                    setOpenMenu(false);
+                  }}
+                >
+                  List order
+                </p>
+                <p
+                  style={{
+                    textAlign: "center",
+                    margin: 0,
+                  }}
+                  onClick={hanldeLogout}
+                >
+                  Log out
+                </p>
+              </div>
+            </div>
+          )}
+        </div>
       ) : (
         <button className="btn btn-primary" onClick={openModal}>
           Login

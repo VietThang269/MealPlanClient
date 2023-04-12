@@ -13,6 +13,7 @@ import { ToastContainer } from "react-toastify";
 import PrivateRoute from "./layouts/PrivateRoute";
 import { useDispatch } from "react-redux";
 import { updateFromLocalStorage } from "./features/user/userSlice";
+import ListOrder from "./pages/ListOrder/ListOrder";
 
 function App() {
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ function App() {
           <Route path="about-us" element={<About />} />
           <Route path="cart" element={<Cart />} />
           <Route path="contact-us" element={<ContactUs />} />
+          <Route path="list-order" element={<ListOrder />} />
         </Route>
       </Routes>
       <ToastContainer
