@@ -174,10 +174,10 @@ const Products = () => {
               <p style={{}}>$ {item?.price}</p>
               <p style={{}}>{item?.description}</p>
               <p style={{}} className="fw-bold">
-                Category: {(item?.category).join(" & ")}
+                Category: {(item?.category || []).join(" & ")}
               </p>
               <p style={{}} className="fw-bold">
-                Component: {(item?.component).join(" & ")}
+                Component: {(item?.component || []).join(" & ")}
               </p>
             </div>
           </div>
