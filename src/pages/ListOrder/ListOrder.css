@@ -169,7 +169,7 @@
   position: relative;
   z-index: 1;
 }
-*/ .pricing-tables .plans .plan .plan__head .plan__title {
+.pricing-tables .plans .plan .plan__head .plan__title {
   color: #ffffff;
   margin: 0 0 0.7rem;
 }
