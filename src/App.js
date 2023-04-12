@@ -18,9 +18,9 @@ function App() {
   const dispatch = useDispatch();
 
   React.useLayoutEffect(() => {
-    const data = localStorage.getItem("id");
-    if (data) {
-      dispatch(updateFromLocalStorage(JSON.parse(data)));
+    const data = JSON.parse(localStorage.getItem("id"));
+    if (data.id !== "") {
+      dispatch(updateFromLocalStorage(data));
     }
   }, []);
   return (

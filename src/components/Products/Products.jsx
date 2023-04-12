@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./Products.css";
 
 import Image from "../../assets/imgs/Home_Slider_1.png";
@@ -12,19 +12,47 @@ import {
   requestGetProducts,
   selectDataProduct,
 } from "../../features/product/productSlice";
+
+import { setChange } from "../../features/cart/cartSlice.js";
 import { selectIsLogin } from "../../features/user/userSlice";
 import { toast } from "react-toastify";
 import { apiPut } from "../../utils/https/request";
+
+import Modal from "react-modal";
+
+const customStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    maxWidth: 600,
+    border: "none",
+    boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
+  },
+};
 
 const Products = () => {
   const dispatch = useDispatch();
   const data = useSelector(selectDataProduct);
   const isLogin = useSelector(selectIsLogin);
+  const [opened, setOpened] = useState(false);
+
+  const [item, setItem] = useState();
 
   useEffect(() => {
     dispatch(requestGetProducts());
   }, [dispatch]);
 
+  function hanldeOpenModal(id) {
+    const response = data.find((item, index) => item._id === id);
+    setOpened(true);
+    setItem(response);
+  }
+
+  console.log(data);
   async function handleAddToCart(data) {
     if (!isLogin) {
       toast("Bạn cần phải đăng nhập !", { type: "error" });
@@ -47,13 +75,13 @@ const Products = () => {
       );
 
       if (response.error === 0) {
+        dispatch(setChange());
         toast("Thêm vào giỏ hàng thành công", { type: "success" });
       }
     } catch (error) {
       toast("Có lỗi xảy ra !", { type: "error" });
     }
 
-    console.log(data);
     // Client
   }
 
@@ -78,13 +106,21 @@ const Products = () => {
             key={index}
             className="product_item d-flex flex-column gap-3 align-items-center"
           >
-            <img src={item?.image} alt="" className="w-100" />
+            <img
+              src={item?.image}
+              alt=""
+              className="w-100"
+              style={{
+                cursor: "pointer",
+              }}
+              onClick={() => hanldeOpenModal(item._id)}
+            />
             <div className="product_item_star">
               <IconStarFill />
               <IconStarFill />
               <IconStarFill />
               <IconStarFill />
-              <IconStar />
+              <IconStarFill />
             </div>
             <p className="product_item_title fw-bold m-0">{item?.name}</p>
             <p className="product_item_price fw-bold m-0 d-flex align-items-center gap-2">
@@ -105,15 +141,47 @@ const Products = () => {
             </div>
           </div>
         ))}
-      </div>
 
-      <div className="d-flex gap-2 mt-3">
-        <button className="btn btn-primary">1</button>
-        <button className="btn">2</button>
-        <button className="btn">3</button>
-        <button className="btn">
-          <IconNextNav />
-        </button>
+        <Modal
+          isOpen={opened}
+          onRequestClose={() => setOpened(false)}
+          style={customStyles}
+        >
+          <div className="modal_product" style={{}}>
+            <div
+              style={{
+                flex: 1,
+              }}
+            >
+              <img
+                src={item?.image}
+                alt=""
+                className="w-100 image_product"
+                style={{
+                  cursor: "pointer",
+                }}
+              />
+            </div>
+
+            <div
+              style={{
+                flex: 2,
+              }}
+            >
+              <p style={{}} className="fw-bold">
+                {item?.name}
+              </p>
+              <p style={{}}>$ {item?.price}</p>
+              <p style={{}}>{item?.description}</p>
+              <p style={{}} className="fw-bold">
+                Category: {(item?.category).join(" & ")}
+              </p>
+              <p style={{}} className="fw-bold">
+                Component: {(item?.component).join(" & ")}
+              </p>
+            </div>
+          </div>
+        </Modal>
       </div>
     </div>
   );

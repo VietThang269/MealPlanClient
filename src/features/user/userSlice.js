@@ -71,7 +71,7 @@ export const userSlice = createSlice({
       state.token = "";
       state.role = "";
       state.isLogin = false;
-      localStorage.removeItem("id");
+      localStorage.setItem("id", JSON.stringify({ id: "", cartId: "" }));
     },
   },
 });

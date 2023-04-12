@@ -6,6 +6,7 @@ import CartItem from "../../components/CartItem/CartItem";
 import CartTotal from "../../components/CartTotal/CartTotal";
 
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { requestGetCart, selectListCard } from "../../features/cart/cartSlice";
 import { selectId } from "../../features/user/userSlice";
 import { apiPut } from "../../utils/https/request";
@@ -15,14 +16,9 @@ const Cart = () => {
   const idUser = useSelector(selectId);
   const dispatch = useDispatch();
 
+  const navigate = useNavigate();
+
   const { cartId } = JSON.parse(localStorage.getItem("id"));
-
-  useEffect(() => {
-    if (idUser !== "") {
-      dispatch(requestGetCart({ userId: idUser || "0" }));
-    }
-  }, [dispatch, idUser]);
-
   async function hanldeUpdateCart() {
     try {
       const response = await apiPut(`cart/${cartId}`, listCart, {});
@@ -94,7 +90,12 @@ const Cart = () => {
                 >
                   UPDATE CART
                 </button>
-                <button className="btn btn-primary2">CONTINUE SHOPPING</button>
+                <button
+                  className="btn btn-primary2"
+                  onClick={() => navigate("/shop")}
+                >
+                  CONTINUE SHOPPING
+                </button>
               </div>
             </div>
           </div>

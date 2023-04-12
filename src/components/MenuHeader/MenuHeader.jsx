@@ -15,7 +15,11 @@ import SignUp from "./SignUp";
 import { useDispatch, useSelector } from "react-redux";
 import { logOut, selectId, selectIsLogin } from "../../features/user/userSlice";
 import { toast } from "react-toastify";
-import { requestGetCart, selectListCard } from "../../features/cart/cartSlice";
+import {
+  requestGetCart,
+  selectListCard,
+  selectIsChange,
+} from "../../features/cart/cartSlice";
 
 const customStyles = {
   content: {
@@ -35,9 +39,11 @@ const MenuHeader = ({ open, setOpen }) => {
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [isResgister, setRegister] = React.useState(false);
   const isLogin = useSelector(selectIsLogin);
+  const [data, setData] = React.useState(0);
 
   const dispatch = useDispatch();
 
+  const isChange = useSelector(selectIsChange);
   function openModal() {
     setIsOpen(true);
   }
@@ -59,7 +65,15 @@ const MenuHeader = ({ open, setOpen }) => {
     if (idUser !== "") {
       dispatch(requestGetCart({ userId: idUser || "0" }));
     }
-  }, [dispatch, idUser, listCart]);
+  }, [dispatch, idUser, isChange]);
+
+  useEffect(() => {
+    if (listCart.length > 0) {
+      const listTotal = listCart?.map((item, _) => item.quanity);
+      const total = listTotal?.reduce((a, b) => a + b);
+      setData(total);
+    }
+  }, [listCart]);
 
   return (
     <div className="d-flex menu_header gap-4 align-items-center">
@@ -91,7 +105,7 @@ const MenuHeader = ({ open, setOpen }) => {
             fontSize: 12,
           }}
         >
-          {listCart?.length}
+          {data}
         </div>
       </div>
 

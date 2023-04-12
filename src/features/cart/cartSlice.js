@@ -4,6 +4,8 @@ const initialState = {
   list: [],
   userId: 0,
   total: 0,
+
+  isChange: false,
   response: {
     loading: false,
     message: "",
@@ -21,7 +23,7 @@ export const cartSlice = createSlice({
       state.response.loading = false;
       state.response.message = action.payload.message;
       state.list = action.payload.list;
-
+      console.log(action.payload.list);
       // Calc
       const listTotal = action.payload.list.map(
         (item, _) => item.price * item.quanity
@@ -58,11 +60,16 @@ export const cartSlice = createSlice({
       state.total = 0;
     },
 
+    setChange(state) {
+      state.isChange = !state.isChange;
+    },
+
     removeFromCart(state, action) {},
     updateCart(state, action) {},
   },
 });
 
+export const selectIsChange = (state) => state.cart.isChange;
 export const selectListCard = (state) => state.cart.list;
 export const selectTotal = (state) => state.cart.total;
 // Action creators are generated for each case reducer function
@@ -74,6 +81,7 @@ export const {
   calcTotal,
   resetData,
   removeItem,
+  setChange,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;
