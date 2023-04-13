@@ -33,6 +33,7 @@ const CartTotal = () => {
           total: totalData,
           list: listData,
           userId: id,
+          status: "pending",
         },
         {}
       );

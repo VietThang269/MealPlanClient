@@ -14,6 +14,7 @@ const customStyles = {
     maxWidth: 600,
     minWidth: 400,
     border: "none",
+    maxHeight: 550,
     boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
   },
 };
@@ -56,6 +57,21 @@ const ListOrder = () => {
     }
   }, [id]);
 
+  function renderColor(status) {
+    switch (status) {
+      case "pending":
+        return "#fa7100";
+      case "delivering":
+        return "#228BE6";
+      case "delivered":
+        return "green";
+      case "cancel":
+        return "red";
+      default:
+        return "#fa7100";
+    }
+  }
+
   return (
     <section class="pricing-tables text-center">
       <div class="container">
@@ -63,7 +79,23 @@ const ListOrder = () => {
         <div class="plans grid-wrapper text-center">
           {data?.map((item, index) => (
             <div key={index} class="plan plan--starter flex-wrapper">
-              <div class="plan__head">
+              <div
+                class="plan__head"
+                style={{
+                  backgroundColor: `${renderColor(item?.status)}`,
+                }}
+              >
+                <h3 class="plan__title caps lspg2">
+                  Status:{" "}
+                  <span
+                    style={{
+                      textTransform: "uppercase",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    {item?.status}
+                  </span>
+                </h3>
                 <h3 class="plan__title caps lspg2">Order {index + 1}</h3>
                 <div class="plan__price">
                   <p class="price price--monthly">${calcTotal(item)}</p>

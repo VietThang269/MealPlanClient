@@ -161,8 +161,6 @@
 }
 .pricing-tables .plans .plan .plan__head {
   transition: all 0.4s ease-in-out;
-  background: linear-gradient(45deg, #fa7100, rgba(44, 121, 255, 0.5));
-  background: #fa7100;
   color: #ffffff;
   padding: 2rem 0;
   overflow: hidden;
