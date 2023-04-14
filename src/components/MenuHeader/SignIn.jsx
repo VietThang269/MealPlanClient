@@ -24,7 +24,7 @@ const SignIn = ({ setRegister, closeModal }) => {
   const dispatch = useDispatch();
   function hanldeSignIn(values) {
     setSubmit(true);
-    dispatch(requestSignIn({ ...values, role: 0 }));
+    dispatch(requestSignIn(values));
   }
 
   useEffect(() => {
